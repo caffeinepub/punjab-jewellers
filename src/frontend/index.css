@@ -1,0 +1,346 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Punjab Jewellers – Dark Luxury Gold Theme */
+    --background: 0.06 0 0;
+    --foreground: 0.96 0.02 85;
+
+    --card: 0.09 0.002 60;
+    --card-foreground: 0.96 0.02 85;
+
+    --popover: 0.1 0.003 60;
+    --popover-foreground: 0.96 0.02 85;
+
+    /* Gold as primary */
+    --primary: 0.75 0.15 75;
+    --primary-foreground: 0.08 0 0;
+
+    --secondary: 0.12 0.004 60;
+    --secondary-foreground: 0.85 0.08 80;
+
+    --muted: 0.12 0.003 50;
+    --muted-foreground: 0.6 0.03 80;
+
+    /* Champagne gold accent */
+    --accent: 0.85 0.08 80;
+    --accent-foreground: 0.08 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.75 0.15 75 / 20%;
+    --input: 0.75 0.15 75 / 12%;
+    --ring: 0.75 0.15 75;
+
+    --chart-1: 0.75 0.15 75;
+    --chart-2: 0.85 0.08 80;
+    --chart-3: 0.65 0.12 70;
+    --chart-4: 0.9 0.05 85;
+    --chart-5: 0.55 0.18 75;
+
+    --sidebar: 0.08 0.002 60;
+    --sidebar-foreground: 0.96 0.02 85;
+    --sidebar-primary: 0.75 0.15 75;
+    --sidebar-primary-foreground: 0.08 0 0;
+    --sidebar-accent: 0.12 0.004 60;
+    --sidebar-accent-foreground: 0.85 0.08 80;
+    --sidebar-border: 0.75 0.15 75 / 20%;
+    --sidebar-ring: 0.75 0.15 75;
+
+    /* Custom luxury tokens */
+    --gold: oklch(75% 0.15 75);
+    --gold-dim: oklch(65% 0.12 75);
+    --champagne: oklch(85% 0.08 80);
+    --deep-black: #0a0a0a;
+    --section-alt: #0f0f0f;
+    --section-dark: #111111;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(212, 175, 55, 0.2);
+    --gold-hex: #D4AF37;
+    --gold-glow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+    --gold-glow-strong: 0 0 35px rgba(212, 175, 55, 0.6), 0 0 70px rgba(212, 175, 55, 0.3), 0 0 100px rgba(212, 175, 55, 0.1);
+    --card-glow: 0 0 35px rgba(212, 175, 55, 0.5), 0 0 70px rgba(212, 175, 55, 0.25), inset 0 0 0 1px rgba(212, 175, 55, 0.4);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: oklch(var(--foreground));
+    font-family: 'Jost', 'Segoe UI', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #D4AF37, #9a7b1e);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F2D060;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+  }
+
+  .text-gold {
+    color: var(--gold-hex);
+  }
+
+  .text-champagne {
+    color: oklch(85% 0.08 80);
+  }
+
+  .gold-glow {
+    box-shadow: var(--gold-glow);
+  }
+
+  .gold-glow-strong {
+    box-shadow: var(--gold-glow-strong);
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-dark {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* P2 fix: properly spaced gold underline — heading wrapper needs pb-5 */
+  .section-heading-wrap {
+    padding-bottom: 20px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .section-heading-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--gold-hex), transparent);
+  }
+
+  /* Legacy gold-underline kept for isolated uses */
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--gold-hex), transparent);
+  }
+
+  .bg-luxury-gradient {
+    background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  }
+
+  .gold-border {
+    border: 1px solid var(--glass-border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gold-border:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: var(--gold-glow);
+  }
+
+  /* P2 fix: sharper, more luxurious button — no radius softness */
+  .btn-gold {
+    background: linear-gradient(105deg, #b8920f 0%, #D4AF37 35%, #F2D060 60%, #D4AF37 80%, #b8920f 100%);
+    background-size: 250% 100%;
+    background-position: left center;
+    color: #0a0a0a;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .btn-gold:hover {
+    background-position: right center;
+    box-shadow: var(--gold-glow-strong);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost-gold {
+    background: transparent;
+    color: var(--gold-hex);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(212,175,55,0.6);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-ghost-gold:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold-hex);
+    box-shadow: var(--gold-glow);
+    transform: translateY(-2px);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: oklch(95% 0.04 85);
+  }
+
+  .section-heading span {
+    color: var(--gold-hex);
+  }
+
+  /* P2 fix: section divider — subtle gold separator */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.25) 30%, rgba(212,175,55,0.5) 50%, rgba(212,175,55,0.25) 70%, transparent 100%);
+  }
+
+  /* P1 fix: card shimmer sweep animation */
+  .card-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(212, 175, 55, 0.08) 50%,
+      rgba(242, 208, 96, 0.12) 55%,
+      rgba(212, 175, 55, 0.06) 60%,
+      transparent 70%
+    );
+    z-index: 2;
+    pointer-events: none;
+    transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .card-shimmer:hover::before {
+    left: 140%;
+  }
+}
+
+/* Loading screen */
+@keyframes gold-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #b8920f 0%, #D4AF37 25%, #F2D060 40%, #fffbf0 50%, #F2D060 60%, #D4AF37 75%, #b8920f 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Hero grain noise texture overlay */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  30% { transform: translate(1%, 1%); }
+  50% { transform: translate(-1%, 1%); }
+  70% { transform: translate(1%, -1%); }
+  90% { transform: translate(-1%, 0%); }
+}
+
+.hero-noise {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  animation: grain 8s steps(10) infinite;
+  mix-blend-mode: overlay;
+}
+
+/* Tilt card effect */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Remove default button styles in nav */
+nav button, nav a {
+  cursor: pointer;
+}
+
+/* P1 fix: product card hover border animation */
+.product-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  box-shadow: inset 0 0 0 1px rgba(212,175,55,0.55);
+}
+
+.group:hover .product-card-border {
+  opacity: 1;
+}
